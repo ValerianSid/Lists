@@ -1,6 +1,11 @@
 package lists.services;
 
+import lists.Button;
+
 public interface IOService {
-    int read();
+    String read();
     void write(String message);
+
+    Button readbutton();
+
 }
