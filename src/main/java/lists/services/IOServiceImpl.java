@@ -1,5 +1,7 @@
 package lists.services;
 
+import lists.Button;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,5 +24,15 @@ public class IOServiceImpl implements IOService {
 
     public void write(String message) {
         System.out.println(message);
+    }
+
+    public Button readbutton() {
+        try {
+            String s = bufferedReader.readLine();
+            return Button.values()[Integer.parseInt(s)];
+        } catch (IOException | ArrayIndexOutOfBoundsException e) {
+            write("Произошла Ошибка. Повторите ввод");
+            return readbutton();
+        }
     }
 }

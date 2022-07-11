@@ -2,6 +2,7 @@ package lists;
 
 import lists.services.IOService;
 import lists.services.IOServiceImpl;
+import lists.Button;
 
 public class ProcessManager {
 
@@ -34,23 +35,23 @@ public class ProcessManager {
 
     private void chooseOperation(){
         mainMenu();
-        int operation = workWithList.readInt(ioService.read());
+        Button operation = ioService.readbutton();
         switch (operation) {
-            case 0:
+            case EXIT:
                 break;
-            case 1:
+            case ADD:
                 add();
                 break;
-            case 2:
+            case REMOVE:
                 remove();
                 break;
-            case 3:
+            case PRINT:
                 print();
                 break;
-            case 4:
+            case CONTAIN:
                 contain();
                 break;
-            case 5:
+            case SET:
                 set();
                 break;
             default:
@@ -70,6 +71,7 @@ public class ProcessManager {
         try{
             workWithList.removeMethod(ioService.read());
         } catch (Exception e) {
+            ioService.write("Вышли за пределы массива, попробуйте снова");
             ioService.write(e.getMessage());
         }
         chooseOperation();
@@ -96,6 +98,7 @@ public class ProcessManager {
             workWithList.setMethod(index, str);
         }
         catch (Exception e) {
+            ioService.write("Вышли за пределы массива, попробуйте снова");
             ioService.write(e.getMessage());
         }
         chooseOperation();
