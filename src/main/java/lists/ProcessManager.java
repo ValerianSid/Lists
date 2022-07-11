@@ -67,7 +67,11 @@ public class ProcessManager {
 
     private void remove(){
         ioService.write("Введите элемент для удаления");
-        workWithList.removeMethod(ioService.read());
+        try{
+            workWithList.removeMethod(ioService.read());
+        } catch (Exception e) {
+            ioService.write(e.getMessage());
+        }
         chooseOperation();
     }
 
@@ -88,7 +92,12 @@ public class ProcessManager {
         String index = ioService.read();
         ioService.write("Введите новый элемент");
         String str = ioService.read();
-        workWithList.setMethod(index, str);
+        try{
+            workWithList.setMethod(index, str);
+        }
+        catch (Exception e) {
+            ioService.write(e.getMessage());
+        }
         chooseOperation();
     }
 
