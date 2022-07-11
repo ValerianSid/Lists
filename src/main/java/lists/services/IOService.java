@@ -1,6 +1,6 @@
 package lists.services;
 
 public interface IOService {
-    int read();
+    String read();
     void write(String message);
 }

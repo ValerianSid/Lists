@@ -11,9 +11,9 @@ public class IOServiceImpl implements IOService {
         this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public int read() {
+    public String read() {
         try {
-            return Integer.parseInt(bufferedReader.readLine());
+            return bufferedReader.readLine();
         } catch (IOException e) {
             write("Произошла Ошибка. Повторите ввод");
             return read();
